@@ -117,10 +117,10 @@ bg_magenta = "\033[45m"
 bg_cyan    = "\033[46m"
 bg_white   = "\033[47m"
 black   = "\033[30m"
-rot = "\033[31m"
-gruen = "\033[32m"
-gelb = "\033[33m"
-blau = "\033[34m"
+red = "\033[31m"
+green = "\033[32m"
+yellow = "\033[33m"
+blue = "\033[34m"
 reset = "\033[0m"
 #################
 
@@ -139,7 +139,7 @@ class Player:
         self.items.append(item)
 
     def die(self):
-        print(f"{rot}you died{reset}\n{death_messages[randint(0,99)]}\n")
+        print(f"{red}you died{reset}\n{death_messages[randint(0, 99)]}\n")
         self.current_room = self.start_room
         self.enter_room("n")
 
@@ -147,17 +147,17 @@ class Player:
     def enter_room(self, new_room_direction):
         new_room = self.current_room.mapping[new_room_direction]
         print(f"{bg_white}{black}{new_room.name}{reset}")
-        print(f"{gelb}{new_room.story}{reset}")
+        print(f"{yellow}{new_room.story}{reset}")
         if len(new_room.mapping) > 0:
-            print(f"{blau}you can go {', '.join(new_room.mapping.keys())}{reset}")
+            print(f"you can go {blue}{', '.join(new_room.mapping.keys())}{reset}")
         if new_room.kill:
             return "die"
         if len(new_room.items) > 0 or None:
             print(f"there is {' ,'.join(new_room.items)} in function")
         if new_room.secret:
-            print("there is a secret in function")
+            print("there is a secret, but you cant do anything by now, because this feature isn't implemented yet")
         if new_room.locked:
-            print("the room is locked, you need a key to unlock it in function ")
+            print("the room is locked, you need a key to unlock it")
             while new_room.locked:
                 if "key" in self.items:
                     use_question = input("you have a key. do you want to use it? [y] or [n]\n>")
@@ -188,72 +188,84 @@ class Player:
                 if action_input == "craft":
                     print("craft here")
                 elif action_input == "help":
-                    print(f"there is:\n{gruen}craft - \ngo {gelb}<direction>\n{gruen}take {gelb}<item> \n{gruen}show {gelb}inv / map{reset}")
+                    print(f"there is:\n{green}craft - \ngo {yellow}<direction>\n{green}take {yellow}<item> \n{green}show {yellow}inv / map{reset}")
+                else: print(f"{red}invalid input {yellow}use help for help")
 
             elif len(action_input.split(" ")) == 2:
-                (verb, noun) = action_input.lower().split(" ")
+                verb, noun = action_input.lower().split(" ")
                 if verb == "go":
                     if noun[0] in self.current_room.mapping.keys():
                         return noun
-                    else: print(f"you can't go {noun}, you can go {', '.join(self.current_room.mapping.keys())}")
+                    else: print(f"{red}you can't go {blue}{noun},{red} you can go {blue}{', '.join(self.current_room.mapping.keys())}{reset}")
                 elif verb == "take":
                     if noun in self.current_room.items:
                         self.current_room.items.remove(noun)
                         self.take_item(noun)
                         return "goon"
-                    else: print(f"you don't have {noun}")
+                    else: print(f"{red}there is no {blue}{noun}{red} to take{reset}")
                 elif verb == "show":
                     if noun == "inv":
                         print(', '.join(self.items))
                         return "goon"
                     elif noun == "map":
                         return "map"
-                    else: print(f"you have no {noun} to show")
-                else:
-                    print("I only understand two commands: go, take, show")
+                    else: print(f"{red}there is no {blue} {noun} {red}to show, you can show {blue}inv {red}or {blue}map{reset}")
+                else: print(f"{red}invalid input {yellow}use help for help")
+
+            else: print(f"{red}please use the correct format{reset}")
+
 
 def game_map():
-    map_input = input(f"Which map do you want to play?{blau} [1]{reset} or {blau}[2]{reset} or {blau}[3]{reset} or {blau}[4]{reset} or {blau}[5]{reset}\n>")
+    map_input = input(f"Which map do you want to play?{blue} [1]{reset} or {blue}[2]{reset} or {blue}[3]{reset} or {blue}[4]{reset} or {blue}[5]{reset}\n>")
     if map_input == "1":
         print(f"You chose the testing Map")
         player1.map = map1()
-        player1.current_room, player1.start_room = room0
+        player1.current_room =  player1.start_room = room0
+        return "goon"
     elif map_input == "2":
         print(f"You chose Map 2: The Chapel of the Ruined Court")
         player1.map = map2()
-        player1.current_room, player1.start_room = room2_0
+        player1.current_room = player1.start_room = room2_0
+        return "goon"
     elif map_input == "3":
         print(f"You chose Map 3: The Citadel of Broken Towers")
         player1.map = map3()
-        player1.current_room, player1.start_room = room3_0
+        player1.current_room = player1.start_room = room3_0
+        return "goon"
     elif map_input == "4":
         print(f"You chose Map 4: The Crownkeep of Falling Paths")
         player1.map = map4()
-        player1.current_room, player1.start_room = room4_0
+        player1.current_room = player1.start_room = room4_0
+        return "goon"
     elif map_input == "5":
         print(f"You chose Map 5: The Labyrinth of Falling Ash")
         player1.map = map5()
-        player1.current_room, player1.start_room = room5_0
+        player1.current_room = player1.start_room = room5_0
+        return "goon"
+    else: print(f"{yellow}choose one of the options{reset}")
 
 
 def game():
-    player1.enter_room("n")
-    output = player1.player_action()
-    while True:
-        if output == "goon":
-            output = player1.player_action()
-        elif output[0] in player1.current_room.mapping.keys():
-            output = player1.enter_room(output[0])
-        elif output == "die":
-            player1.die()
-            output = player1.player_action()
-        elif output == "map":
-            print(player1.map)
-            output = player1.player_action()
-        else: print("wrong return statement")
+    if game_map() == "goon":
+        player1.enter_room("n")
+        output = player1.player_action()
+
+        while True:
+            if output == "goon":
+                output = player1.player_action()
+            elif output[0] in player1.current_room.mapping.keys():
+                output = player1.enter_room(output[0])
+            elif output == "die":
+                player1.die()
+                output = player1.player_action()
+            elif output == "map":
+                print(player1.map)
+                output = player1.player_action()
+            else: print("wrong return statement")
+    else: print("w")
 
 
 player1 = Player()
 
-#game_map()
-#game()
+game_map()
+game()
