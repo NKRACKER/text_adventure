@@ -2,9 +2,6 @@ from random import randint
 from maps import *
 from rooms import *
 
-
-
-
 #################
 death_messages = [
     "You died. Bold strategy.",
@@ -109,9 +106,7 @@ death_messages = [
     "Your adventure ended the way it was lived: suspiciously.",
     "You have fallen. Gracefully is not the word.",
     "You died. The narrator would like a quick word about impulse control.",
-    "Here lies your hero. Cause of death: advanced nonsense."
-]
-################
+    "Here lies your hero. Cause of death: advanced nonsense."]
 #COLORS
 bg_black   = "\033[40m"
 bg_red     = "\033[41m"
@@ -145,7 +140,7 @@ class Player:
 
     def die(self):
         print(f"{rot}you died{reset}\n{death_messages[randint(0,99)]}\n")
-        self.current_room = room0
+        self.current_room = self.start_room
         self.enter_room("n")
 
 
@@ -222,23 +217,23 @@ def game_map():
     if map_input == "1":
         print(f"You chose the testing Map")
         player1.map = map1()
-        player1.current_room = room0
+        player1.current_room, player1.start_room = room0
     elif map_input == "2":
         print(f"You chose Map 2: The Chapel of the Ruined Court")
         player1.map = map2()
-        player1.current_room = room2_0
+        player1.current_room, player1.start_room = room2_0
     elif map_input == "3":
         print(f"You chose Map 3: The Citadel of Broken Towers")
         player1.map = map3()
-        player1.current_room = room3_0
+        player1.current_room, player1.start_room = room3_0
     elif map_input == "4":
         print(f"You chose Map 4: The Crownkeep of Falling Paths")
         player1.map = map4()
-        player1.current_room = room4_0
+        player1.current_room, player1.start_room = room4_0
     elif map_input == "5":
         print(f"You chose Map 5: The Labyrinth of Falling Ash")
         player1.map = map5()
-        player1.current_room = room5_0
+        player1.current_room, player1.start_room = room5_0
 
 
 def game():
@@ -260,5 +255,5 @@ def game():
 
 player1 = Player()
 
-game_map()
-game()
+#game_map()
+#game()

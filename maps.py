@@ -1,3 +1,4 @@
+from rooms import *
 def map1():
     return r"""
             [8] -- [9S]
