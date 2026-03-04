@@ -18,7 +18,7 @@ room2 = Room(kill=True, name="[2] Trap")
 room3 = Room(secret=True, name="[3] Side Room")
 room4 = Room(name="[4] Junction")
 room5 = Room(items=["key"], name="[5] Key Room")
-room6 = Room(kill=True, name="[6] Pit")
+room6 = Room(kill=True,secret=True,name="[6] Pit")
 room7 = Room(locked=True, name="[7] Lock")
 room8 = Room(name="[8] Corridor")
 room9 = Room(secret=True, name="[9] Hidden Room")
@@ -29,14 +29,14 @@ room13 = Room(name="[13] Exit",story="you finally made it out of here", win = Tr
 
 # MAPPING_1
 room0.mapping = {"n": room1}
-room1.mapping = {"s": room0, "w": room3, "e": room2, "n": room4}
+room1.mapping = {"e": room2, "n": room3}
 room2.mapping = {}
-room3.mapping = {"e": room1}
-room4.mapping = {"s": room1, "w": room6, "e": room5, "n": room7}
-room5.mapping = {"w": room4, "e": room10}
+room3.mapping = {"n": room6, "e": room5}
+room4.mapping = {"s": room5, "w": room6, "e": room7}
+room5.mapping = {"w": room3, "e": room10, "n": room4, "s": room2}
 room6.mapping = {"e": room4}
-room7.mapping = {"s": room4, "n": room8, "e": room11}
-room8.mapping = {"s": room7, "e": room9}
+room7.mapping = {"s": room10, "n": room8, "e": room11, "w": room4}
+room8.mapping = {"e": room9}
 room9.mapping = {"w": room8, "s": room10}
 room10.mapping = {"w": room5, "n": room9, "e": room12}
 room11.mapping = {"w": room7, "e": room13}
@@ -80,6 +80,9 @@ room2_13.mapping = {"s": room2_7, "w": room2_9, "n": room2_14}
 room2_14.mapping = {"s": room2_13, "w": room2_12}
 
 
+
+
+'''
 #################
 # ROOMS_3
 room3_0 = Room(name="[0] Outer Gate", story="Broken banners hang over the ruined entrance.")
@@ -402,3 +405,405 @@ room5_68.mapping = {"s": room5_67, "e": room5_69, "n": room5_56}
 room5_69.mapping = {"w": room5_68, "s": room5_62, "e": room5_70}
 room5_70.mapping = {"w": room5_69, "n": room5_63, "e": room5_71, "s": room5_58}
 room5_71.mapping = {"w": room5_70, "s": room5_63, "e": room5_67}
+
+
+'''
+
+#################
+#ROOMS_6
+room6_0 = Room(
+    name="[0] Tidal Gate",
+    story="Sea water drips through the cracked threshold stones."
+)
+room6_1 = Room(
+    name="[1] Lower Narthex",
+    story="The old entrance hall smells of salt, wax, and mildew."
+)
+room6_2 = Room(
+    name="[2] Undertow Pit",
+    story="The floor gives way into a black shaft where water roars below.",
+    kill=True
+)
+room6_3 = Room(
+    name="[3] Cloister Walk",
+    story="A narrow cloister path circles a drowned inner court."
+)
+room6_4 = Room(
+    name="[4] Flooded Chapel",
+    story="Rows of broken pews vanish beneath dark water."
+)
+room6_5 = Room(
+    name="[5] Store Cellar",
+    story="Old crates sag in the damp. A small iron key has not yet rusted away.",
+    items=["key"]
+)
+room6_6 = Room(
+    name="[6] Abbey Hall",
+    story="A long hall of worn stone opens into several ruined wings."
+)
+room6_7 = Room(
+    name="[7] Broken Nave",
+    story="The central nave has partially collapsed, but a path still winds through it."
+)
+room6_8 = Room(
+    name="[8] Scriptorium",
+    story="Mold-eaten manuscripts cling to leaning shelves.",
+    items=["note"]
+)
+room6_9 = Room(
+    name="[9] Iron Choir",
+    story="A rusted iron screen divides the old choir from the rest of the abbey."
+)
+room6_10 = Room(
+    name="[10] Bell Landing",
+    story="A narrow stone landing overlooks the ruined bell shaft."
+)
+room6_11 = Room(
+    name="[11] Rope Loft",
+    story="Ropes and pulleys hang from the rafters above the choir.",
+    items=["rope"]
+)
+room6_12 = Room(
+    name="[12] Upper Transept",
+    story="Cold drafts move through the upper crossing of the abbey."
+)
+room6_13 = Room(
+    name="[13] Sealed Reliquary",
+    story="A heavy reliquary door bars the eastern shrine.",
+    locked=True
+)
+room6_14 = Room(
+    name="[14] Hidden Apse",
+    story="A secret apse survives behind the reliquary wall.",
+    secret=True,
+    items=["chart"]
+)
+room6_15 = Room(
+    name="[15] High Reliquary",
+    story="A silver chest rests on a stone altar above the ruined transept.",
+    items=["crown"]
+)
+room6_16 = Room(
+    name="[16] East Balcony",
+    story="A narrow balcony peers into the drowned sanctuary.",
+    items=["map"]
+)
+room6_17 = Room(
+    name="[17] Font Passage",
+    story="A passage of cracked basins and toppled fonts leads deeper east."
+)
+room6_18 = Room(
+    name="[18] Quiet Dormitory",
+    story="Dusty cots line the walls. The room feels strangely untouched.",
+    items=["apple"]
+)
+
+#MAPPINGS_6
+room6_0.mapping = {
+    "w": room6_1,
+    "n": room6_4
+}
+room6_1.mapping = {
+    "e": room6_0,
+    "n": room6_3
+}
+room6_2.mapping = {}
+room6_3.mapping = {
+    "s": room6_1,
+    "e": room6_4,
+    "n": room6_6
+}
+room6_4.mapping = {
+    "w": room6_3,
+    "s": room6_0,
+    "n": room6_7
+}
+room6_5.mapping = {
+    "e": room6_6,
+    "s": room6_2
+}
+room6_6.mapping = {
+    "w": room6_5,
+    "e": room6_7,
+    "s": room6_3,
+    "n": room6_8
+}
+room6_7.mapping = {
+    "w": room6_6,
+    "e": room6_17,
+    "s": room6_4,
+    "n": room6_9
+}
+room6_8.mapping = {
+    "s": room6_6,
+    "e": room6_9,
+    "n": room6_11
+}
+room6_9.mapping = {
+    "w": room6_8,
+    "e": room6_10,
+    "s": room6_7,
+    "n": room6_12
+}
+room6_10.mapping = {
+    "w": room6_9,
+    "s": room6_17,
+    "n": room6_13
+}
+room6_11.mapping = {
+    "e": room6_12,
+    "s": room6_8
+}
+room6_12.mapping = {
+    "w": room6_11,
+    "e": room6_13,
+    "s": room6_9,
+    "n": room6_15
+}
+room6_13.mapping = {
+    "w": room6_12,
+    "e": room6_14,
+    "s": room6_10
+}
+room6_14.mapping = {
+    "w": room6_13,
+    "s": room6_16
+}
+room6_15.mapping = {
+    "s": room6_12
+}
+room6_16.mapping = {
+    "n": room6_14,
+    "s": room6_18
+}
+room6_17.mapping = {
+    "w": room6_7,
+    "e": room6_18,
+    "n": room6_10
+}
+room6_18.mapping = {
+    "w": room6_17,
+    "n": room6_16
+}
+
+#################
+#ROOMS_7
+room7_0 = Room(
+    name="[0] Intake Hatch",
+    story="A round hatch opens into the lowest level of the machine-fortress."
+)
+room7_1 = Room(
+    name="[1] Rust Foyer",
+    story="Steam condenses on riveted walls and drops onto the metal floor."
+)
+room7_2 = Room(
+    name="[2] Gear Hub",
+    story="Huge gears grind somewhere behind the walls."
+)
+room7_3 = Room(
+    name="[3] East Service",
+    story="A narrow maintenance aisle runs beside old boilers."
+)
+room7_4 = Room(
+    name="[4] West Service",
+    story="A dim service corridor rattles whenever the fortress stirs."
+)
+room7_5 = Room(
+    name="[5] Crusher Pit",
+    story="The floor plate drops and crushing pistons slam down from above.",
+    kill=True
+)
+room7_6 = Room(
+    name="[6] Key Forge",
+    story="A cold forge sits silent. A brass key rests in the ash.",
+    items=["key"]
+)
+room7_7 = Room(
+    name="[7] Outer Conveyor",
+    story="An outer belt route circles the western machinery."
+)
+room7_8 = Room(
+    name="[8] Piston Walk",
+    story="Thick pistons rise and fall behind grated walls."
+)
+room7_9 = Room(
+    name="[9] Tooth Corridor",
+    story="The corridor bends around giant gear teeth."
+)
+room7_10 = Room(
+    name="[10] Boiler Hall",
+    story="Ancient boilers loom over a maze of pipes and catwalks."
+)
+room7_11 = Room(
+    name="[11] West Rampart",
+    story="A fortified metal ramp leads toward the upper works."
+)
+room7_12 = Room(
+    name="[12] Conveyor Spine",
+    story="A moving spine of belts and chains drives cargo eastward."
+)
+room7_13 = Room(
+    name="[13] Ratchet Run",
+    story="A ratcheting mechanism allows passage only one way.",
+)
+room7_14 = Room(
+    name="[14] Brass Passage",
+    story="Warm brass walls amplify every footstep into a metallic hum."
+)
+room7_15 = Room(
+    name="[15] Turbine Stairs",
+    story="A steep stair coils around a silent turbine shaft."
+)
+room7_16 = Room(
+    name="[16] North Rampart",
+    story="A broad armored walkway spans the northern face of the keep."
+)
+room7_17 = Room(
+    name="[17] Governor Seal",
+    story="A sealed security gate blocks the central upper route.",
+    locked=True
+)
+room7_18 = Room(
+    name="[18] Signal Bridge",
+    story="A bridge of cables and signal lamps crosses the inner machinery."
+)
+room7_19 = Room(
+    name="[19] Warden Rail",
+    story="A narrow rail track leads toward the upper command vault."
+)
+room7_20 = Room(
+    name="[20] Sky Intake",
+    story="Cold air rushes through giant intake vanes overhead."
+)
+room7_21 = Room(
+    name="[21] Hidden Control Room",
+    story="A concealed maintenance station still holds faded schematics.",
+    secret=True,
+    items=["chart"]
+)
+room7_22 = Room(
+    name="[22] Crown Rail",
+    story="A polished rail line runs straight toward the central sanctum."
+)
+room7_23 = Room(
+    name="[23] Clockwork Sanctum",
+    story="At the top of the machine-fortress, a crown rests inside a ticking cage.",
+    items=["crown"]
+)
+
+#MAPPINGS_7
+room7_0.mapping = {
+    "n": room7_2
+}
+room7_1.mapping = {
+    "w": room7_4,
+    "e": room7_2,
+    "n": room7_8
+}
+room7_2.mapping = {
+    "w": room7_1,
+    "e": room7_3,
+    "n": room7_9,
+    "s": room7_0
+}
+room7_3.mapping = {
+    "w": room7_2,
+    "n": room7_10,
+    "s": room7_5
+}
+room7_4.mapping = {
+    "e": room7_1,
+    "n": room7_7
+}
+room7_5.mapping = {}
+room7_6.mapping = {
+    "w": room7_10,
+    "n": room7_15
+}
+room7_7.mapping = {
+    "e": room7_8,
+    "n": room7_11,
+    "s": room7_4
+}
+room7_8.mapping = {
+    "w": room7_7,
+    "e": room7_9,
+    "n": room7_12,
+    "s": room7_1
+}
+room7_9.mapping = {
+    "w": room7_8,
+    "e": room7_10,
+    "s": room7_2
+}
+room7_10.mapping = {
+    "w": room7_9,
+    "e": room7_6,
+    "n": room7_14,
+    "s": room7_3
+}
+room7_11.mapping = {
+    "e": room7_12,
+    "s": room7_7
+}
+room7_12.mapping = {
+    "w": room7_11,
+    "e": room7_13,
+    "n": room7_16,
+    "s": room7_8
+}
+room7_13.mapping = {
+    "e": room7_14,
+    "n": room7_17,
+    "s": room7_9
+}
+room7_14.mapping = {
+    "w": room7_13,
+    "e": room7_15,
+    "n": room7_18,
+    "s": room7_10
+}
+room7_15.mapping = {
+    "w": room7_14,
+    "n": room7_19,
+    "s": room7_6
+}
+room7_16.mapping = {
+    "e": room7_17,
+    "n": room7_20,
+    "s": room7_12
+}
+room7_17.mapping = {
+    "w": room7_16,
+    "e": room7_18,
+    "n": room7_21,
+    "s": room7_13
+}
+room7_18.mapping = {
+    "w": room7_17,
+    "e": room7_19,
+    "n": room7_22,
+    "s": room7_14
+}
+room7_19.mapping = {
+    "w": room7_18,
+    "n": room7_23,
+    "s": room7_15
+}
+room7_20.mapping = {
+    "e": room7_21,
+    "s": room7_16
+}
+room7_21.mapping = {
+    "w": room7_20,
+    "e": room7_22,
+    "s": room7_17
+}
+room7_22.mapping = {
+    "w": room7_21,
+    "e": room7_23,
+    "s": room7_18
+}
+room7_23.mapping = {
+    "s": room7_19
+}

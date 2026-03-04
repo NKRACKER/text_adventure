@@ -209,7 +209,7 @@ class Player:
                         else: print(f"{red}there is no {blue}{noun}{red} to take{reset}")
                     elif verb == "show":
                         if noun == "inv":
-                            print(', '.join(self.items))
+                            print(f"you have: {', '.join(self.items)}")
                             return "goon"
                         elif noun == "map":
                             return "map"
@@ -232,21 +232,32 @@ def game_map():
             player1.map = map2()
             player1.current_room = player1.start_room = room2_0
             return "goon"
-        elif map_input == "3":
-            print(f"You chose Map 3: The Citadel of Broken Towers")
-            player1.map = map3()
-            player1.current_room = player1.start_room = room3_0
+        # elif map_input == "3":
+        #     print(f"You chose Map 3: The Citadel of Broken Towers")
+        #     player1.map = map3()
+        #     player1.current_room = player1.start_room = room3_0
+        #     return "goon"
+        # elif map_input == "4":
+        #     print(f"You chose Map 4: The Crownkeep of Falling Paths")
+        #     player1.map = map4()
+        #     player1.current_room = player1.start_room = room4_0
+        #     return "goon"
+        # elif map_input == "5":
+        #     print(f"You chose Map 5: The Labyrinth of Falling Ash")
+        #     player1.map = map5()
+        #     player1.current_room = player1.start_room = room5_0
+        #     return "goon"
+        elif map_input == "6":
+            print(f"You chose Map 6: The Drowned Abbey of Tides")
+            player1.map = map6()
+            player1.current_room = player1.start_room = room6_0
             return "goon"
-        elif map_input == "4":
-            print(f"You chose Map 4: The Crownkeep of Falling Paths")
-            player1.map = map4()
-            player1.current_room = player1.start_room = room4_0
+        elif map_input == "7":
+            print(f"You chose Map 7: The Clockwork Keep of Brass")
+            player1.map = map7()
+            player1.current_room = player1.start_room = room7_0
             return "goon"
-        elif map_input == "5":
-            print(f"You chose Map 5: The Labyrinth of Falling Ash")
-            player1.map = map5()
-            player1.current_room = player1.start_room = room5_0
-            return "goon"
+
         else:
             print(f"{yellow}choose one of the options{reset}")
 
