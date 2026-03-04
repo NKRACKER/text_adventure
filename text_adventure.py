@@ -137,7 +137,7 @@ class Player:
 
     def take_item(self, item):
         self.items.append(item)
-        print(f"you took {blue}{item}{reset}")
+        print(f"you took the {blue}{item}{reset}")
 
     def die(self):
         print(f"{red}you died{yellow}\n{death_messages[randint(0, 99)]}{reset}\n")
@@ -161,7 +161,7 @@ class Player:
             print("the room is locked, you need a key to unlock it")
             while new_room.locked:
                 if "key" in self.items:
-                    use_question = input("you have a key. do you want to use it? [y] or [n]\n>")
+                    use_question = input(f"you have a key. do you want to use it? {blue}[y]{reset} or {blue}[n]{reset}\n>")
                     if use_question == "y":
                         self.items.remove("key")
                         new_room.locked = False
@@ -171,10 +171,12 @@ class Player:
 
                     elif use_question == "n":
                         return "goon"
-                    else: print("type [y] or [n]")
+                    else: print(f"type {blue}[y]{reset} or{blue} [n]{reset}")
                 else:
                     print("you don't have a key!")
                     return "goon"
+        if new_room.win:
+            return "win"
 
         self.current_room = new_room
 
@@ -265,6 +267,8 @@ def game():
             elif output == "map":
                 print(player1.map)
                 output = player1.player_action()
+            elif output == "win":
+                print(f"{bg_blue}{yellow}YOU WON!{reset}")
             else: print("wrong return statement")
 
 

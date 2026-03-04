@@ -1,5 +1,5 @@
 class Room:
-    def __init__(self, mapping=None, locked=False, kill=False, secret=False, items=None, name="", story=""):
+    def __init__(self, mapping=None, locked=False, kill=False,win=False, secret=False, items=None, name="", story=""):
         self.mapping = mapping if mapping is not None else {}
         self.locked = locked
         self.kill = kill
@@ -7,6 +7,7 @@ class Room:
         self.items = items if items is not None else []
         self.name = name
         self.story = story
+        self.win = win
 
 
 #################
@@ -24,7 +25,7 @@ room9 = Room(secret=True, name="[9] Hidden Room")
 room10 = Room(name="[10] Upper Hall")
 room11 = Room(name="[11] Trapdoor")
 room12 = Room(secret=True, name="[12] Secret Hall")
-room13 = Room(name="[13] Exit")
+room13 = Room(name="[13] Exit",story="you finally made it out of here", win = True)
 
 # MAPPING_1
 room0.mapping = {"n": room1}
@@ -59,7 +60,7 @@ room2_10 = Room(name="[10] Iron Gate", story="A heavy iron gate blocks the path 
 room2_11 = Room(name="[11] Crypt", story="A loose floor slab gives way beneath you.", kill=True)
 room2_12 = Room(name="[12] Treasury", story="Old chests lie open. On a pedestal rests a crown.", items=["crown"])
 room2_13 = Room(name="[13] Bell Tower", story="A massive bell hangs above. Wind whistles through the cracks.", items=["rope"])
-room2_14 = Room(name="[14] Observatory", story="A hidden chamber under the roof with faded star charts.", items=["chart"], secret=True)
+room2_14 = Room(name="[14] Observatory",win = True, story="A hidden chamber under the roof with faded star charts.", items=["chart"], secret=True)
 
 # MAPPINGS_2
 room2_0.mapping = {"n": room2_1}
@@ -110,7 +111,7 @@ room3_25 = Room(name="[25] Abyss Crack", story="The floor splits open into darkn
 room3_26 = Room(name="[26] High Terrace", story="Wind tears through the open terrace high above the ruins.")
 room3_27 = Room(name="[27] East Tower", story="This lonely tower leans slightly, but still stands.")
 room3_28 = Room(name="[28] Observatory", story="A hidden chamber beneath the roof holds faded star charts.", items=["chart"], secret=True)
-room3_29 = Room(name="[29] Throne Vault", story="At the end of the fortress, a forgotten crown rests beneath a beam of pale light.", items=["crown"])
+room3_29 = Room(name="[29] Throne Vault", story="At the end of the fortress, a forgotten crown rests beneath a beam of pale light.", items=["crown"],win=True)
 
 # MAPPINGS_3
 room3_0.mapping = {"n": room3_1}
@@ -197,7 +198,7 @@ room4_46 = Room(name="[46] Mirror Hall", story="Shattered mirrors reflect your t
 room4_47 = Room(name="[47] Hidden Reliquary", story="A secret chamber holds an old seal wrapped in brittle cloth.", items=["seal"], secret=True)
 room4_48 = Room(name="[48] Skybridge", story="The hanging bridge snaps behind you as you cross. Retreat is now a myth.")
 room4_49 = Room(name="[49] Execution Yard", story="The yard floor gives way beneath rotten timbers, and the fall is not negotiable.", kill=True)
-
+room4_50 = Room(name="[50] Royal Garden", story="You are in the garden and suddenly you see a golden ball and a frog besides it", win=True)
 # MAPPINGS_4
 room4_0.mapping = {"n": room4_1}
 room4_1.mapping = {"s": room4_0, "w": room4_2, "e": room4_3, "n": room4_4}
@@ -327,7 +328,7 @@ room5_68 = Room(name="[68] Ash Vault", story="Ash piles knee-high under a low cr
 room5_69 = Room(name="[69] Hidden Observatory", story="A secret observatory waits behind the upper walls, holding old star charts.", secret=True, items=["chart"])
 room5_70 = Room(name="[70] Inner Ring", story="The innermost ring of the fortress circles the final core.")
 room5_71 = Room(name="[71] Crown Engine", story="At the heart of the labyrinth stands a strange throne-machine, and on it rests a crown.", items=["crown"])
-
+room5_72 = Room(name="[72] Treasure Room", story="you stumble the stairs up and then you see it. A bright shine\nits a bif treasure!", win=True)
 # MAPPINGS_5
 room5_0.mapping = {"n": room5_1}
 room5_1.mapping = {"s": room5_0, "w": room5_2, "e": room5_3, "n": room5_4}
