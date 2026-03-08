@@ -149,6 +149,9 @@ class Player:
         new_room = self.current_room.mapping[new_room_direction]
         print(f"{bg_white}{black}{new_room.name}{reset}")
         print(f"{yellow}{new_room.story}{reset}")
+        if new_room.win:
+            return True
+        #this way, the final room cant be locked
         if len(new_room.mapping) > 0:
             print(f"you can go {blue}{', '.join(new_room.mapping.keys())}{reset}")
         if new_room.kill:
@@ -175,8 +178,7 @@ class Player:
                 else:
                     print("you don't have a key!")
                     return "goon"
-        if new_room.win:
-            return "win"
+
 
         self.current_room = new_room
 
@@ -214,74 +216,72 @@ class Player:
                         elif noun == "map":
                             return "map"
                         else: print(f"{red}there is no {blue} {noun} {red}to show, you can show {blue}inv {red}or {blue}map{reset}")
-                    else: print(f"{red}invalid input {yellow}use help for help")
+                    else: print(f"{red}invalid input {yellow}use help for help{reset}")
 
             else: print(f"{red}please use the correct format{reset}")
 
 
 def game_map():
-    while True:
-        map_input = input(f"Which map do you want to play?{blue} [1]{reset} or {blue}[2]{reset} or {blue}[3]{reset} or {blue}[4]{reset} or {blue}[5]{reset}\n>")
-        if map_input == "1":
-            print(f"You chose the testing Map")
-            player1.map = map1()
-            player1.current_room =  player1.start_room = room0
-            return "goon"
-        elif map_input == "2":
-            print(f"You chose Map 2: The Chapel of the Ruined Court")
-            player1.map = map2()
-            player1.current_room = player1.start_room = room2_0
-            return "goon"
-        # elif map_input == "3":
-        #     print(f"You chose Map 3: The Citadel of Broken Towers")
-        #     player1.map = map3()
-        #     player1.current_room = player1.start_room = room3_0
-        #     return "goon"
-        # elif map_input == "4":
-        #     print(f"You chose Map 4: The Crownkeep of Falling Paths")
-        #     player1.map = map4()
-        #     player1.current_room = player1.start_room = room4_0
-        #     return "goon"
-        # elif map_input == "5":
-        #     print(f"You chose Map 5: The Labyrinth of Falling Ash")
-        #     player1.map = map5()
-        #     player1.current_room = player1.start_room = room5_0
-        #     return "goon"
-        elif map_input == "6":
-            print(f"You chose Map 6: The Drowned Abbey of Tides")
-            player1.map = map6()
-            player1.current_room = player1.start_room = room6_0
-            return "goon"
-        elif map_input == "7":
-            print(f"You chose Map 7: The Clockwork Keep of Brass")
-            player1.map = map7()
-            player1.current_room = player1.start_room = room7_0
-            return "goon"
 
-        else:
-            print(f"{yellow}choose one of the options{reset}")
+    maps = {
+        "1": {"map": map1(), "room": room0, "return": "goon", "print": "You chose the testing Map"},
+        "2": {"map": map2(), "room": room2_0, "return": "goon", "print": "You chose Map 2: The Chapel of the Ruined Court"},
+        "3": {"map": None, "room": room0, "return": "unfinished", "print": "You chose Map 3: The Citadel of Broken Towers"},
+        "4": {"map": None, "room": room0, "return": "unfinished", "print": "You chose Map 4: The Crownkeep of Falling Paths"},
+        "5": {"map": None, "room": room0, "return": "unfinished", "print": "You chose Map 5: The Labyrinth of Falling Ash"},
+        "6": {"map": map6(), "room": room6_0, "return": "goon", "print": "You chose Map 6: The Drowned Abbey of Tides"},
+        "7": {"map": map7(), "room": room7_0, "return": "goon", "print": "You chose Map 7: The Clockwork Keep of Brass"},
+        "8": {"map": None, "room": room_test_0, "return": "goon","print": "You chose Map 8: The short test"}
+    }
+
+    while True:
+        map_input = input(f"""
+Which map do you want to play?
+    {blue}[1] {reset} test_long
+    {blue}[2] {reset} The Chapel of the Ruined Court
+    {blue}[3] {reset} The Citadel of Broken Towers
+    {blue}[4] {reset} The Crownkeep of Falling Paths
+    {blue}[5] {reset} The Labyrinth of Falling Ash
+    {blue}[6] {reset} The Drowned Abbey of Tides
+    {blue}[7] {reset} The Clockwork Keep of Brass
+    {blue}[8] {reset} test_short
+>""")
+
+
+
+        print(f"{yellow}choose one of the options{reset}")
+
+
 
 
 def game():
-    if game_map() == "goon":
+    map_output = game_map()
+    if map_output == "goon":
         player1.enter_room("n")
         output = player1.player_action()
 
         while True:
-            if output == "goon":
-                output = player1.player_action()
-            elif output[0] in player1.current_room.mapping.keys():
+            output = "placeholder"
+            if output[0] in player1.current_room.mapping.keys():
                 output = player1.enter_room(output[0])
+            if output:
+                print(f"{bg_yellow}{black}YOU WON!{reset}")
+                break
+            elif output == "goon":
+                output = player1.player_action()
             elif output == "die":
                 player1.die()
                 output = player1.player_action()
             elif output == "map":
                 print(player1.map)
                 output = player1.player_action()
-            elif output == "win":
-                print(f"{bg_blue}{yellow}YOU WON!{reset}")
+            elif output == "unfinished":
+                print(f"{red}unfinished element{reset}")
+                break
             else: print("wrong return statement")
+    elif map_output == "unfinished":
+        print(f"{red}unfinished element{reset}")
 
-
-player1 = Player()
-game()
+if __name__ == "__main__":
+    player1 = Player()
+    game()

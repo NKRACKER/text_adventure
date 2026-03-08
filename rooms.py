@@ -9,6 +9,13 @@ class Room:
         self.story = story
         self.win = win
 
+room_test_0 = Room(name="0")
+room_test_1 = Room(name="1")
+room_test_2 = Room(name="2", win=True)
+
+room_test_0.mapping = {"n": room_test_1}
+room_test_1.mapping = {"n": room_test_2}
+room_test_2.mapping = {}
 
 #################
 # ROOMS_1
@@ -36,12 +43,12 @@ room4.mapping = {"s": room5, "w": room6, "e": room7}
 room5.mapping = {"w": room3, "e": room10, "n": room4, "s": room2}
 room6.mapping = {"e": room4}
 room7.mapping = {"s": room10, "n": room8, "e": room11, "w": room4}
-room8.mapping = {"e": room9}
-room9.mapping = {"w": room8, "s": room10}
-room10.mapping = {"w": room5, "n": room9, "e": room12}
-room11.mapping = {"w": room7, "e": room13}
+room8.mapping = {"e": room9, "s": room7}
+room9.mapping = {"w": room8, "s": room11}
+room10.mapping = {"w": room5, "n": room7, "e": room12}
+room11.mapping = {"w": room7, "e": room13, "n": room9}
 room12.mapping = {"w": room10}
-room13.mapping = {"w": room11}
+room13.mapping = {}
 
 
 #################
@@ -481,7 +488,8 @@ room6_14 = Room(
 room6_15 = Room(
     name="[15] High Reliquary",
     story="A silver chest rests on a stone altar above the ruined transept.",
-    items=["crown"]
+    items=["crown"],
+    win=True
 )
 room6_16 = Room(
     name="[16] East Balcony",
@@ -500,11 +508,10 @@ room6_18 = Room(
 
 #MAPPINGS_6
 room6_0.mapping = {
-    "w": room6_1,
-    "n": room6_4
+    "n": room6_1
 }
 room6_1.mapping = {
-    "e": room6_0,
+    "w": room6_2,
     "n": room6_3
 }
 room6_2.mapping = {}
@@ -515,7 +522,6 @@ room6_3.mapping = {
 }
 room6_4.mapping = {
     "w": room6_3,
-    "s": room6_0,
     "n": room6_7
 }
 room6_5.mapping = {
@@ -569,9 +575,7 @@ room6_14.mapping = {
     "w": room6_13,
     "s": room6_16
 }
-room6_15.mapping = {
-    "s": room6_12
-}
+room6_15.mapping = {}
 room6_16.mapping = {
     "n": room6_14,
     "s": room6_18
@@ -688,12 +692,13 @@ room7_22 = Room(
 room7_23 = Room(
     name="[23] Clockwork Sanctum",
     story="At the top of the machine-fortress, a crown rests inside a ticking cage.",
-    items=["crown"]
+    items=["crown"],
+    win=True
 )
 
 #MAPPINGS_7
 room7_0.mapping = {
-    "n": room7_2
+    "n": room7_1
 }
 room7_1.mapping = {
     "w": room7_4,
