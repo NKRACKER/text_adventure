@@ -264,24 +264,20 @@ def display_map(maps):
 def game_map():
 
     maps = {
+        "0": {"map": None, "room": room_test_0, "return": "goon", "print": "You chose Map 0: The short test"},
         "1": {"map": map1(), "room": room0, "return": "goon", "print": "You chose the testing Map"},
-        "2": {"map": None, "room": room2_0, "return": "unfinished", "print": "You chose Map 2: The Chapel of the Ruined Court"},
-        "3": {"map": map3(), "room": room6_0, "return": "goon", "print": "You chose Map 3: The Drowned Abbey of Tides"},
-        "4": {"map": map4(), "room": room7_0, "return": "goon", "print": "You chose Map 4: The Clockwork Keep of Brass"},
-        "5": {"map": None, "room": None, "return": "unfinished", "print": ""},
-        "6": {"map": None, "room": None, "return": "unfinished", "print": ""},
-        "7": {"map": None, "room": None, "return": "unfinished", "print": ""},
-        "8": {"map": None, "room": room_test_0, "return": "goon","print": "You chose Map 8: The short test"}
+        "2": {"map": None, "room": room2_0, "return": "unfinished", "print": ""},
+        "3": {"map": map3(), "room": room3_0, "return": "goon", "print": "You chose Map 3: The Drowned Abbey of Tides"},
+        "4": {"map": map4(), "room": room4_0, "return": "goon", "print": "You chose Map 4: The Clockwork Keep of Brass"}
     }
 
     while True:
         map_input = input(f"""
 Which map do you want to play?
+    {blue}[0] {reset} test_short
     {blue}[1] {reset} test_long
-    {blue}[2] {reset} The Chapel of the Ruined Court
-    {blue}[3] {reset} The Drowned Abbey of Tides
-    {blue}[4] {reset} The Clockwork Keep of Brass
-    {blue}[8] {reset} test_short
+    {blue}[2] {reset} The Drowned Abbey of Tides
+    {blue}[3] {reset} The Clockwork Keep of Brass
 >""")
         if map_input in maps:
             room_dict = maps[map_input]
