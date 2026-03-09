@@ -159,7 +159,7 @@ class Player:
         if len(new_room.items) > 0 or None:
             print(f"there is a {blue}{' ,'.join(new_room.items)}{reset}")
         if new_room.secret:
-            print("there is a secret, but you cant do anything by now, because this feature isn't implemented yet")
+            return "minigame"
         if new_room.locked:
             print("the room is locked, you need a key to unlock it")
             while new_room.locked:
@@ -220,6 +220,32 @@ class Player:
 
             else: print(f"{red}please use the correct format{reset}")
 
+
+def mini_game():
+    random = int(input("one or two?\n>"))
+    if random == 1:
+        print(f"you have to guess the number! Its between 1 and 100. You have 5 tries")
+        random_number = randint(1, 100)
+        count = 5
+        while count >= 0:
+            print(random_number)
+            try:
+                guess = int(input(f"your guess\n>"))
+            except ValueError:
+                print(f"{red}Wrong input{reset}")
+            else:
+                if guess == random_number:
+                    print(f"{blue}Minigame WON!{reset}")
+                    return "miniwon"
+                else:
+                    print(f"You guessed wrong, try again. {count} tries left")
+                    count = count-1
+        return "minilost"
+
+    elif random == 2:
+        print("minigame 2 - always win")
+        return "miniwon"
+
 def display_map(maps):
     for i in range(0, len(maps)):
         row = str(maps[i]).replace(",","").replace("'","")
@@ -266,6 +292,13 @@ def game():
             if output is True:
                 print(f"{bg_yellow}{black}YOU WON!{reset}")
                 break
+            if output == "minigame":
+                minigame = mini_game()
+                if minigame == "miniwon":
+                    player1.current_room.secret = False
+                    output = player1.player_action()
+                elif minigame == "minilost":
+                    output = player1.player_action()
             elif output == "goon":
                 output = player1.player_action()
             elif output == "die":
