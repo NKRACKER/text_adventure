@@ -19,16 +19,16 @@ room_test_2.mapping = {}
 
 #################
 # ROOMS_1
-room0 = Room(name="[0] Start")
-room1 = Room(name="[1] Hall")
-room2 = Room(kill=True, name="[2] Trap")
-room3 = Room(secret=True, name="[3] Side Room")
-room4 = Room(name="[4] Junction")
-room5 = Room(items=["key"], name="[5] Key Room")
-room6 = Room(kill=True,secret=True,name="[6] Pit")
-room7 = Room(locked=True, name="[7] Lock")
-room8 = Room(name="[8] Corridor")
-room9 = Room(secret=True, name="[9] Hidden Room")
+room0 = Room(name="[00] Start")
+room1 = Room(name="[01] Hall")
+room2 = Room(kill=True, name="[02] Trap")
+room3 = Room(secret=True, name="[03] Side Room")
+room4 = Room(name="[04] Junction")
+room5 = Room(items=["key"], name="[05] Key Room")
+room6 = Room(kill=True,secret=True,name="[06] Pit")
+room7 = Room(locked=True, name="[07] Lock")
+room8 = Room(name="[08] Corridor")
+room9 = Room(secret=True, name="[09] Hidden Room")
 room10 = Room(name="[10] Upper Hall")
 room11 = Room(name="[11] Trapdoor")
 room12 = Room(secret=True, name="[12] Secret Hall")
@@ -53,16 +53,16 @@ room13.mapping = {}
 
 #################
 # ROOMS_2
-room2_0 = Room(name="[0] Gatehouse", story="Cold air comes through the broken gate.")
-room2_1 = Room(name="[1] Entry Court", story="Weeds grow between cracked stones.")
-room2_2 = Room(name="[2] Well Shaft", story="You step onto rotten wood covering an old well.", kill=True)
-room2_3 = Room(name="[3] Great Hall", story="Dusty banners hang from the ceiling.")
-room2_4 = Room(name="[4] Library", story="Collapsed shelves lean against the walls.", items=["note"])
-room2_5 = Room(name="[5] Armory", story="Rusty weapons line the walls. A small key glints on a rack.", items=["key"])
-room2_6 = Room(name="[6] Kitchen", story="Cold ovens and broken tables fill the room.", items=["torch"])
-room2_7 = Room(name="[7] Pantry", story="A hidden little storage room. Somehow, one apple survived.", items=["apple"], secret=True)
-room2_8 = Room(name="[8] Chapel", story="A cracked altar stands in silence.")
-room2_9 = Room(name="[9] Servants' Stairs", story="Narrow stone stairs twist upward.")
+room2_0 = Room(name="[00] Gatehouse", story="Cold air comes through the broken gate.")
+room2_1 = Room(name="[01] Entry Court", story="Weeds grow between cracked stones.")
+room2_2 = Room(name="[02] Well Shaft", story="You step onto rotten wood covering an old well.", kill=True)
+room2_3 = Room(name="[03] Great Hall", story="Dusty banners hang from the ceiling.")
+room2_4 = Room(name="[04] Library", story="Collapsed shelves lean against the walls.", items=["note"])
+room2_5 = Room(name="[05] Armory", story="Rusty weapons line the walls. A small key glints on a rack.", items=["key"])
+room2_6 = Room(name="[06] Kitchen", story="Cold ovens and broken tables fill the room.", items=["torch"])
+room2_7 = Room(name="[07] Pantry", story="A hidden little storage room. Somehow, one apple survived.", items=["apple"], secret=True)
+room2_8 = Room(name="[08] Chapel", story="A cracked altar stands in silence.")
+room2_9 = Room(name="[09] Servants' Stairs", story="Narrow stone stairs twist upward.")
 room2_10 = Room(name="[10] Iron Gate", story="A heavy iron gate blocks the path north.", locked=True)
 room2_11 = Room(name="[11] Crypt", story="A loose floor slab gives way beneath you.", kill=True)
 room2_12 = Room(name="[12] Treasury", story="Old chests lie open. On a pedestal rests a crown.", items=["crown"])
@@ -419,46 +419,46 @@ room5_71.mapping = {"w": room5_70, "s": room5_63, "e": room5_67}
 #################
 #ROOMS_6
 room6_0 = Room(
-    name="[0] Tidal Gate",
+    name="[00] Tidal Gate",
     story="Sea water drips through the cracked threshold stones."
 )
 room6_1 = Room(
-    name="[1] Lower Narthex",
+    name="[01] Lower Narthex",
     story="The old entrance hall smells of salt, wax, and mildew."
 )
 room6_2 = Room(
-    name="[2] Undertow Pit",
+    name="[02] Undertow Pit",
     story="The floor gives way into a black shaft where water roars below.",
     kill=True
 )
 room6_3 = Room(
-    name="[3] Cloister Walk",
+    name="[03] Cloister Walk",
     story="A narrow cloister path circles a drowned inner court."
 )
 room6_4 = Room(
-    name="[4] Flooded Chapel",
+    name="[04] Flooded Chapel",
     story="Rows of broken pews vanish beneath dark water."
 )
 room6_5 = Room(
-    name="[5] Store Cellar",
+    name="[05] Store Cellar",
     story="Old crates sag in the damp. A small iron key has not yet rusted away.",
     items=["key"]
 )
 room6_6 = Room(
-    name="[6] Abbey Hall",
+    name="[06] Abbey Hall",
     story="A long hall of worn stone opens into several ruined wings."
 )
 room6_7 = Room(
-    name="[7] Broken Nave",
+    name="[07] Broken Nave",
     story="The central nave has partially collapsed, but a path still winds through it."
 )
 room6_8 = Room(
-    name="[8] Scriptorium",
+    name="[08] Scriptorium",
     story="Mold-eaten manuscripts cling to leaning shelves.",
     items=["note"]
 )
 room6_9 = Room(
-    name="[9] Iron Choir",
+    name="[09] Iron Choir",
     story="A rusted iron screen divides the old choir from the rest of the abbey."
 )
 room6_10 = Room(

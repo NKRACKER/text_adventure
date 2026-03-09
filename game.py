@@ -250,9 +250,16 @@ def mini_game():
         return "miniwon"
 
 def display_map(maps):
-    for i in range(0, len(maps)):
-        row = str(maps[i]).replace(",","").replace("'","")
-        print(row)
+    for i in range(len(maps)):
+        row = maps[i]
+        room_name = player1.current_room.name[:4]
+        for x in range(len(row)):
+            if room_name in row[x]:
+                row[x] = f"{bg_yellow}{room_name}{reset}"
+            elif str(row[x]).startswith("\x1b[43m"):
+                row[x] = str(row[x]).replace("\x1b[43m", "\x1b[45m")
+            print(row[x], end="")
+        print()
 
 def game_map():
 
