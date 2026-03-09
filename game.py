@@ -266,8 +266,8 @@ def game_map():
     maps = {
         "1": {"map": map1(), "room": room0, "return": "goon", "print": "You chose the testing Map"},
         "2": {"map": None, "room": room2_0, "return": "unfinished", "print": "You chose Map 2: The Chapel of the Ruined Court"},
-        "3": {"map": map3(), "room": room0, "return": "goon", "print": "You chose Map 3: The Drowned Abbey of Tides"},
-        "4": {"map": map4(), "room": room0, "return": "goon", "print": "You chose Map 4: The Clockwork Keep of Brass"},
+        "3": {"map": map3(), "room": room6_0, "return": "goon", "print": "You chose Map 3: The Drowned Abbey of Tides"},
+        "4": {"map": map4(), "room": room7_0, "return": "goon", "print": "You chose Map 4: The Clockwork Keep of Brass"},
         "5": {"map": None, "room": None, "return": "unfinished", "print": ""},
         "6": {"map": None, "room": None, "return": "unfinished", "print": ""},
         "7": {"map": None, "room": None, "return": "unfinished", "print": ""},

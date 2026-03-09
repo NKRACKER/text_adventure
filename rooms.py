@@ -593,45 +593,45 @@ room6_18.mapping = {
 #################
 #ROOMS_7
 room7_0 = Room(
-    name="[0] Intake Hatch",
+    name="[00] Intake Hatch",
     story="A round hatch opens into the lowest level of the machine-fortress."
 )
 room7_1 = Room(
-    name="[1] Rust Foyer",
+    name="[01] Rust Foyer",
     story="Steam condenses on riveted walls and drops onto the metal floor."
 )
 room7_2 = Room(
-    name="[2] Gear Hub",
+    name="[02] Gear Hub",
     story="Huge gears grind somewhere behind the walls."
 )
 room7_3 = Room(
-    name="[3] East Service",
+    name="[03] East Service",
     story="A narrow maintenance aisle runs beside old boilers."
 )
 room7_4 = Room(
-    name="[4] West Service",
+    name="[04] West Service",
     story="A dim service corridor rattles whenever the fortress stirs."
 )
 room7_5 = Room(
-    name="[5] Crusher Pit",
+    name="[05] Crusher Pit",
     story="The floor plate drops and crushing pistons slam down from above.",
     kill=True
 )
 room7_6 = Room(
-    name="[6] Key Forge",
+    name="[06] Key Forge",
     story="A cold forge sits silent. A brass key rests in the ash.",
     items=["key"]
 )
 room7_7 = Room(
-    name="[7] Outer Conveyor",
+    name="[07] Outer Conveyor",
     story="An outer belt route circles the western machinery."
 )
 room7_8 = Room(
-    name="[8] Piston Walk",
+    name="[08] Piston Walk",
     story="Thick pistons rise and fall behind grated walls."
 )
 room7_9 = Room(
-    name="[9] Tooth Corridor",
+    name="[09] Tooth Corridor",
     story="The corridor bends around giant gear teeth."
 )
 room7_10 = Room(
