@@ -220,17 +220,21 @@ class Player:
 
             else: print(f"{red}please use the correct format{reset}")
 
+def display_map(maps):
+    for i in range(0, len(maps)):
+        row = str(maps[i]).replace(",","").replace("'","")
+        print(row)
 
 def game_map():
 
     maps = {
         "1": {"map": map1(), "room": room0, "return": "goon", "print": "You chose the testing Map"},
-        "2": {"map": map2(), "room": room2_0, "return": "goon", "print": "You chose Map 2: The Chapel of the Ruined Court"},
-        "3": {"map": None, "room": room0, "return": "unfinished", "print": "You chose Map 3: The Citadel of Broken Towers"},
-        "4": {"map": None, "room": room0, "return": "unfinished", "print": "You chose Map 4: The Crownkeep of Falling Paths"},
-        "5": {"map": None, "room": room0, "return": "unfinished", "print": "You chose Map 5: The Labyrinth of Falling Ash"},
-        "6": {"map": map6(), "room": room6_0, "return": "goon", "print": "You chose Map 6: The Drowned Abbey of Tides"},
-        "7": {"map": map7(), "room": room7_0, "return": "goon", "print": "You chose Map 7: The Clockwork Keep of Brass"},
+        "2": {"map": None, "room": room2_0, "return": "unfinished", "print": "You chose Map 2: The Chapel of the Ruined Court"},
+        "3": {"map": map3(), "room": room0, "return": "goon", "print": "You chose Map 3: The Drowned Abbey of Tides"},
+        "4": {"map": map4(), "room": room0, "return": "goon", "print": "You chose Map 4: The Clockwork Keep of Brass"},
+        "5": {"map": None, "room": None, "return": "unfinished", "print": ""},
+        "6": {"map": None, "room": None, "return": "unfinished", "print": ""},
+        "7": {"map": None, "room": None, "return": "unfinished", "print": ""},
         "8": {"map": None, "room": room_test_0, "return": "goon","print": "You chose Map 8: The short test"}
     }
 
@@ -239,32 +243,27 @@ def game_map():
 Which map do you want to play?
     {blue}[1] {reset} test_long
     {blue}[2] {reset} The Chapel of the Ruined Court
-    {blue}[3] {reset} The Citadel of Broken Towers
-    {blue}[4] {reset} The Crownkeep of Falling Paths
-    {blue}[5] {reset} The Labyrinth of Falling Ash
-    {blue}[6] {reset} The Drowned Abbey of Tides
-    {blue}[7] {reset} The Clockwork Keep of Brass
+    {blue}[3] {reset} The Drowned Abbey of Tides
+    {blue}[4] {reset} The Clockwork Keep of Brass
     {blue}[8] {reset} test_short
 >""")
-
-
-
-        print(f"{yellow}choose one of the options{reset}")
-
-
-
+        if map_input in maps:
+            room_dict = maps[map_input]
+            player1.map = room_dict["map"]
+            player1.current_room = player1.start_room = room_dict["room"]
+            print(room_dict["print"])
+            return room_dict["return"]
+        else: print(f"{yellow}choose one of the options{reset}")
 
 def game():
     map_output = game_map()
     if map_output == "goon":
         player1.enter_room("n")
         output = player1.player_action()
-
         while True:
-            output = "placeholder"
             if output[0] in player1.current_room.mapping.keys():
                 output = player1.enter_room(output[0])
-            if output:
+            if output is True:
                 print(f"{bg_yellow}{black}YOU WON!{reset}")
                 break
             elif output == "goon":
@@ -273,8 +272,12 @@ def game():
                 player1.die()
                 output = player1.player_action()
             elif output == "map":
-                print(player1.map)
-                output = player1.player_action()
+                if player1.map is not None:
+                    print(display_map(player1.map))
+                    output = player1.player_action()
+                else:
+                    print(f"{yellow}there is no map to show{reset}")
+                    output = player1.player_action()
             elif output == "unfinished":
                 print(f"{red}unfinished element{reset}")
                 break

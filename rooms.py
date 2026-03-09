@@ -71,7 +71,7 @@ room2_14 = Room(name="[14] Observatory",win = True, story="A hidden chamber unde
 
 # MAPPINGS_2
 room2_0.mapping = {"n": room2_1}
-room2_1.mapping = {"s": room2_0, "n": room2_3, "e": room2_4, "w": room2_2}
+room2_1.mapping = {"n": room2_3, "e": room2_4, "w": room2_2}
 room2_2.mapping = {}
 room2_3.mapping = {"s": room2_1, "w": room2_5, "e": room2_6, "n": room2_8}
 room2_4.mapping = {"w": room2_1, "n": room2_6, "e": room2_5}
