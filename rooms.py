@@ -11,7 +11,7 @@ class Room:
 
 room_test_0 = Room(name="0")
 room_test_1 = Room(name="1")
-room_test_2 = Room(name="2", win=True)
+room_test_2 = Room(name="2", secret=True)
 
 room_test_0.mapping = {"n": room_test_1}
 room_test_1.mapping = {"n": room_test_2}

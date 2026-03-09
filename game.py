@@ -159,7 +159,7 @@ class Player:
         if len(new_room.items) > 0 or None:
             print(f"there is a {blue}{' ,'.join(new_room.items)}{reset}")
         if new_room.secret:
-            return "minigame"
+            print("there is a secret")
         if new_room.locked:
             print("the room is locked, you need a key to unlock it")
             while new_room.locked:
@@ -178,10 +178,7 @@ class Player:
                 else:
                     print("you don't have a key!")
                     return "goon"
-
-
         self.current_room = new_room
-
         return "goon"
 
 
@@ -215,6 +212,10 @@ class Player:
                             return "goon"
                         elif noun == "map":
                             return "map"
+                        elif noun == "secret":
+                            if player1.current_room.secret == True:
+                                return "minigame"
+                            else: print(f"{yellow}There is no secret in this room{reset}")
                         else: print(f"{red}there is no {blue} {noun} {red}to show, you can show {blue}inv {red}or {blue}map{reset}")
                     else: print(f"{red}invalid input {yellow}use help for help{reset}")
 
@@ -222,13 +223,14 @@ class Player:
 
 
 def mini_game():
+    print("you can play a minigame!")
     random = int(input("one or two?\n>"))
     if random == 1:
         print(f"you have to guess the number! Its between 1 and 100. You have 5 tries")
         random_number = randint(1, 100)
-        count = 5
+        count = 4
         while count >= 0:
-            print(random_number)
+            print(random_number) # testing purposes
             try:
                 guess = int(input(f"your guess\n>"))
             except ValueError:
@@ -238,8 +240,9 @@ def mini_game():
                     print(f"{blue}Minigame WON!{reset}")
                     return "miniwon"
                 else:
-                    print(f"You guessed wrong, try again. {count} tries left")
+                    print(f"You guessed wrong, {blue}{count}{reset} tries left")
                     count = count-1
+        print(f"{red}Minigame LOST{reset}")
         return "minilost"
 
     elif random == 2:
@@ -295,7 +298,6 @@ def game():
             if output == "minigame":
                 minigame = mini_game()
                 if minigame == "miniwon":
-                    player1.current_room.secret = False
                     output = player1.player_action()
                 elif minigame == "minilost":
                     output = player1.player_action()
