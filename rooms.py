@@ -483,3 +483,107 @@ room4_22.mapping = {
 room4_23.mapping = {
     "s": room4_19
 }
+
+
+#################
+# ROOMS_5
+room5_0 = Room(
+    name="[00] Frost Gate",
+    story="A heavy iron gate stands half-open. Frost coats every stone."
+)
+room5_1 = Room(
+    name="[01] Guard Chamber",
+    story="An old guardroom with a cracked hearth. The fire died long ago."
+)
+room5_2 = Room(
+    name="[02] Bone Cellar",
+    story="The floor gives out under your weight. Bones rush up to meet you.",
+    kill=True
+)
+room5_3 = Room(
+    name="[03] Supply Hall",
+    story="Frost-covered crates line the walls. A torch still wrapped in oilcloth.",
+    items=["torch"]
+)
+room5_4 = Room(
+    name="[04] Barracks",
+    story="Rows of frozen cots. Someone left in a hurry and never came back."
+)
+room5_5 = Room(
+    name="[05] Forge Pit",
+    story="The ancient forge collapsed inward. Embers still glow beneath the rubble.",
+    kill=True
+)
+room5_6 = Room(
+    name="[06] Arsenal",
+    story="Racks of rusted weapons. A brass key hangs forgotten on a peg.",
+    items=["key"]
+)
+room5_7 = Room(
+    name="[07] Inner Keep",
+    story="The heart of the watchtower. Cold wind howls through arrow slits."
+)
+room5_8 = Room(
+    name="[08] Prison",
+    story="The cell floor collapses into a black shaft. Something stirs below.",
+    kill=True
+)
+room5_9 = Room(
+    name="[09] Armory Cache",
+    story="A hidden alcove behind a loose stone. Faded schematics of the tower.",
+    secret=True,
+    items=["chart"]
+)
+room5_10 = Room(
+    name="[10] Sealed Vault",
+    story="A heavy vault door. Whatever is inside was meant to stay there.",
+    locked=True
+)
+room5_11 = Room(
+    name="[11] Commander's Hall",
+    story="At the top of the tower, a frozen crown rests on a stone throne.",
+    items=["crown"],
+    win=True
+)
+
+# MAPPINGS_5
+room5_0.mapping = {
+    "n": room5_1
+}
+room5_1.mapping = {
+    "s": room5_0,
+    "e": room5_2,
+    "n": room5_4
+}
+room5_2.mapping = {}
+room5_3.mapping = {
+    "w": room5_4,
+    "n": room5_6
+}
+room5_4.mapping = {
+    "s": room5_1,
+    "e": room5_3,
+    "n": room5_7
+}
+room5_5.mapping = {}
+room5_6.mapping = {
+    "s": room5_3,
+    "w": room5_7
+}
+room5_7.mapping = {
+    "s": room5_4,
+    "w": room5_5,
+    "e": room5_6,
+    "n": room5_10
+}
+room5_8.mapping = {}
+room5_9.mapping = {
+    "e": room5_10
+}
+room5_10.mapping = {
+    "w": room5_9,
+    "e": room5_8,
+    "n": room5_11,
+    "s": room5_7
+}
+room5_11.mapping = {}
