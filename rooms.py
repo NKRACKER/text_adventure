@@ -39,7 +39,7 @@ room13 = Room(name="[13] Exit",story="you finally made it out of here", win = Tr
 room0.mapping = {"n": room1}
 room1.mapping = {"e": room2, "n": room3}
 room2.mapping = {}
-room3.mapping = {"n": room6, "e": room5}
+room3.mapping = {"n": room6, "e": room5, "s": room1}
 room4.mapping = {"s": room5, "w": room6, "e": room7}
 room5.mapping = {"w": room3, "e": room10, "n": room4, "s": room2}
 room6.mapping = {"e": room4}
