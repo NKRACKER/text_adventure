@@ -269,7 +269,8 @@ def game_map():
         "2": {"map": map2(), "room": room2_0, "return": "goon", "print": "You chose Map 2: The Ruined Castle"},
         "3": {"map": map3(), "room": room3_0, "return": "goon", "print": "You chose Map 3: The Drowned Abbey of Tides"},
         "4": {"map": map4(), "room": room4_0, "return": "goon", "print": "You chose Map 4: The Clockwork Keep of Brass"},
-        "5": {"map": map5(), "room": room5_0, "return": "goon", "print": "You chose Map 5: The Forsaken Watchtower"}
+        "5": {"map": map5(), "room": room5_0, "return": "goon", "print": "You chose Map 5: The Forsaken Watchtower"},
+        "6": {"map": map6(), "room": room6_0, "return": "goon", "print": "You chose Map 6: The Sunken Crypt of Embers"}
     }
 
     while True:
@@ -281,6 +282,7 @@ Which map do you want to play?
     {blue}[3] {reset} The Drowned Abbey of Tides
     {blue}[4] {reset} The Clockwork Keep of Brass
     {blue}[5] {reset} The Forsaken Watchtower
+    {blue}[6] {reset} The Sunken Crypt of Embers
 >""")
         if map_input in maps:
             room_dict = maps[map_input]

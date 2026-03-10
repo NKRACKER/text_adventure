@@ -587,3 +587,180 @@ room5_10.mapping = {
     "s": room5_7
 }
 room5_11.mapping = {}
+
+
+#################
+# ROOMS_6
+room6_0 = Room(
+    name="[00] Ashen Gate",
+    story="The gate to the crypt hangs open. Ash drifts silently through the arch."
+)
+room6_1 = Room(
+    name="[01] Ember Foyer",
+    story="A wide entry chamber. The walls are still faintly warm to the touch."
+)
+room6_2 = Room(
+    name="[02] Pit of Bones",
+    story="The floor collapses under you. Bones break your fall—and everything else.",
+    kill=True
+)
+room6_3 = Room(
+    name="[03] Cinder Hall",
+    story="A broad hall carpeted in grey ash. The air smells of old fire.",
+    items=["torch"]
+)
+room6_4 = Room(
+    name="[04] Scorching Vent",
+    story="A gust of superheated air blasts upward from a vent below.",
+    kill=True
+)
+room6_5 = Room(
+    name="[05] Charred Armory",
+    story="Weapon racks reduced to charcoal. A brass key lies untouched in the ash.",
+    items=["key"]
+)
+room6_6 = Room(
+    name="[06] Ember Gate",
+    story="A chamber sealed behind heat-fused iron bars. Faded notes line the walls.",
+    locked=True,
+    items=["note"]
+)
+room6_7 = Room(
+    name="[07] Ash Corridor",
+    story="A long corridor coated in soft ash. Every step leaves a perfect print."
+)
+room6_8 = Room(
+    name="[08] Coal Walk",
+    story="Black walls of compacted coal reflect faint red light from somewhere below."
+)
+room6_9 = Room(
+    name="[09] Magma Drop",
+    story="You step onto a false floor above a magma pool. It does not hold.",
+    kill=True
+)
+room6_10 = Room(
+    name="[10] Soot Chamber",
+    story="A small chamber thick with black soot. The air is heavy and bitter."
+)
+room6_11 = Room(
+    name="[11] Fire Vault",
+    story="A vault chamber where embers still glow in ancient braziers."
+)
+room6_12 = Room(
+    name="[12] Bone Shrine",
+    story="A hidden alcove behind a collapsed pillar. Strange inscriptions cover the wall.",
+    secret=True,
+    items=["chart"]
+)
+room6_13 = Room(
+    name="[13] High Crypt",
+    story="Upper crypt passages hewn from black stone. The ceiling drips with minerals."
+)
+room6_14 = Room(
+    name="[14] Ember Bridge",
+    story="A narrow bridge over a dry abyss. A ratchet locks the gate behind you once crossed."
+)
+room6_15 = Room(
+    name="[15] Crypt Antechamber",
+    story="An antechamber before the upper crypts. Cold air descends from above.",
+    items=["rope"]
+)
+room6_16 = Room(
+    name="[16] Inferno Shaft",
+    story="A shaft roaring with updrafts of flame. The heat is absolute.",
+    kill=True
+)
+room6_17 = Room(
+    name="[17] Upper Crypt",
+    story="The upper burial halls. Dust covers everything in a perfect grey layer."
+)
+room6_18 = Room(
+    name="[18] Deep Sanctum",
+    story="The innermost sanctum. An iron crown rests cold on a stone pedestal.",
+    items=["crown"]
+)
+room6_19 = Room(
+    name="[19] Ember Throne",
+    story="The ancient throne chamber. The crypt's master is long gone. You have claimed it.",
+    win=True
+)
+
+# MAPPINGS_6
+room6_0.mapping = {
+    "n": room6_1
+}
+room6_1.mapping = {
+    "s": room6_0,
+    "w": room6_2,
+    "n": room6_3
+}
+room6_2.mapping = {}
+room6_3.mapping = {
+    "s": room6_1,
+    "n": room6_7,
+    "e": room6_4
+}
+room6_4.mapping = {}
+room6_5.mapping = {
+    "e": room6_7,
+    "n": room6_10
+}
+room6_6.mapping = {
+    "n": room6_13,
+    "s": room6_8
+}
+room6_7.mapping = {
+    "w": room6_5,
+    "e": room6_8,
+    "s": room6_3,
+    "n": room6_11
+}
+room6_8.mapping = {
+    "w": room6_7,
+    "e": room6_9,
+    "s": room6_4,
+    "n": room6_6
+}
+room6_9.mapping = {}
+room6_10.mapping = {
+    "s": room6_5,
+    "e": room6_11,
+    "n": room6_15
+}
+room6_11.mapping = {
+    "w": room6_10,
+    "e": room6_6,
+    "s": room6_7,
+    "n": room6_14
+}
+room6_12.mapping = {
+    "e": room6_15
+}
+room6_13.mapping = {
+    "s": room6_6,
+    "w": room6_14,
+    "n": room6_16
+}
+room6_14.mapping = {
+    "s": room6_11,
+    "e": room6_13,
+    "n": room6_18
+}
+room6_15.mapping = {
+    "s": room6_10,
+    "w": room6_12,
+    "e": room6_14,
+    "n": room6_17
+}
+room6_16.mapping = {}
+room6_17.mapping = {
+    "s": room6_15,
+    "e": room6_18
+}
+room6_18.mapping = {
+    "w": room6_17,
+    "s": room6_14,
+    "e": room6_16,
+    "n": room6_19
+}
+room6_19.mapping = {}
