@@ -177,7 +177,7 @@ room3_18 = Room(
     items=["apple"]
 )
 
-#MAPPINGS_6
+#MAPPINGS_3
 room3_0.mapping = {
     "n": room3_1
 }
@@ -262,7 +262,7 @@ room3_18.mapping = {
 }
 
 #################
-#ROOMS_7
+#ROOMS_4
 room4_0 = Room(
     name="[00] Intake Hatch",
     story="A round hatch opens into the lowest level of the machine-fortress."
@@ -367,7 +367,7 @@ room4_23 = Room(
     win=True
 )
 
-#MAPPINGS_7
+#MAPPINGS_4
 room4_0.mapping = {
     "n": room4_1
 }
