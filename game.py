@@ -227,7 +227,7 @@ class Player:
 
 def mini_game():
     print("you can play a minigame!")
-    random = int(input("one or two?\n>"))
+    random = int(input("[1] or [2]?\n>"))# only until second minigame is implemented
     if random == 1:
         print(f"you have to guess the number! Its between 1 and 100. You have 5 tries")
         random_number = randint(1, 100)
@@ -251,6 +251,7 @@ def mini_game():
     elif random == 2:
         print("minigame 2 - always win")
         return "miniwon"
+    else: print("wrong input")# only until second minigame is implemented
 
 def display_map(maps):
     for i in range(len(maps)):
