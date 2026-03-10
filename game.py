@@ -243,8 +243,13 @@ def mini_game():
                     return "miniwon"
                 else:
                     print(f"You guessed wrong, {blue}{count}{reset} tries left")
+                    if guess > random_number:
+                        print(f"{blue}the number is smaller{reset}")
+                    elif guess < random_number:
+                        print(f"{blue}the number is bigger{reset}")
                     count = count-1
         print(f"{red}Minigame LOST{reset}")
+        print(f"the number was:{blue} {random_number}{reset}")
         return "minilost"
 
     elif random == 2:
