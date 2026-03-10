@@ -189,8 +189,11 @@ class Player:
             if len(action_input.split(" ")) == 1:
                 if action_input == "craft":
                     print("craft here")
+                elif action_input == "exit":
+                    print(f"{bg_red}{black}EXIT GAME{reset}")
+                    game()
                 elif action_input == "help":
-                    print(f"you can do:\n{green}go {yellow}<direction>\n{green}take {yellow}<item> \n{green}show {yellow}inv / map{reset}")
+                    print(f"you can do:\n{green}go {yellow}<direction>\n{green}take {yellow}<item> \n{green}show {yellow}inv / map / secret \n{green}exit{reset}")
                 else: print(f"{red}invalid input {yellow}use help for help{reset}")
 
             elif len(action_input.split(" ")) == 2:
@@ -316,7 +319,7 @@ def game():
                 output = player1.player_action()
             elif output == "map":
                 if player1.map is not None:
-                    print(display_map(player1.map))
+                    display_map(player1.map)
                     output = player1.player_action()
                 else:
                     print(f"{yellow}there is no map to show{reset}")

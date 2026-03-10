@@ -51,7 +51,6 @@ room11.mapping = {"w": room7, "e": room13, "n": room9}
 room12.mapping = {"w": room10}
 room13.mapping = {}
 
-
 #################
 # ROOMS_2
 room2_0 = Room(name="[00] Gatehouse", story="Cold air comes through the broken gate.")
@@ -85,7 +84,6 @@ room2_11.mapping = {}
 room2_12.mapping = {"w": room2_10, "e": room2_14}
 room2_13.mapping = {"s": room2_7, "w": room2_9, "n": room2_14}
 room2_14.mapping = {"s": room2_13, "w": room2_12}
-
 
 #################
 #ROOMS_3
@@ -176,7 +174,6 @@ room3_18 = Room(
     story="Dusty cots line the walls. The room feels strangely untouched.",
     items=["apple"]
 )
-
 #MAPPINGS_3
 room3_0.mapping = {
     "n": room3_1
@@ -366,7 +363,6 @@ room4_23 = Room(
     items=["crown"],
     win=True
 )
-
 #MAPPINGS_4
 room4_0.mapping = {
     "n": room4_1
@@ -484,7 +480,6 @@ room4_23.mapping = {
     "s": room4_19
 }
 
-
 #################
 # ROOMS_5
 room5_0 = Room(
@@ -545,7 +540,6 @@ room5_11 = Room(
     items=["crown"],
     win=True
 )
-
 # MAPPINGS_5
 room5_0.mapping = {
     "n": room5_1
@@ -587,7 +581,6 @@ room5_10.mapping = {
     "s": room5_7
 }
 room5_11.mapping = {}
-
 
 #################
 # ROOMS_6
@@ -684,7 +677,6 @@ room6_19 = Room(
     story="The ancient throne chamber. The crypt's master is long gone. You have claimed it.",
     win=True
 )
-
 # MAPPINGS_6
 room6_0.mapping = {
     "n": room6_1
