@@ -130,9 +130,9 @@ class Player:
         if items is None:
             items = []
         self.items = items
-        self.name = name if not None else ""
-        self.current_room = current_room if not None else room0
-        self.map = map if not None else map1()
+        self.name = name if name is not None else ""
+        self.current_room = current_room if current_room is not None else room0
+        self.map = map if map is not None else map1()
         self.start_room = start_room
 
     def take_item(self, item):
@@ -140,7 +140,7 @@ class Player:
         print(f"you took the {blue}{item}{reset}")
 
     def die(self):
-        print(f"{red}you died{yellow}\n{death_messages[randint(0, 99)]}{reset}\n")
+        print(f"{red}you died{yellow}\n{death_messages[randint(0, len(death_messages) - 1)]}{reset}\n")
         self.current_room = self.start_room
         self.enter_room("n")
 
@@ -156,7 +156,7 @@ class Player:
             print(f"you can go {blue}{', '.join(new_room.mapping.keys())}{reset}")
         if new_room.kill:
             return "die"
-        if len(new_room.items) > 0 or None:
+        if len(new_room.items) > 0:
             print(f"there is a {blue}{' ,'.join(new_room.items)}{reset}")
         if new_room.secret:
             print("there is a secret")
@@ -191,14 +191,14 @@ class Player:
                     print("craft here")
                 elif action_input == "exit":
                     print(f"{bg_red}{black}EXIT GAME{reset}")
-                    game()
+                    return "exit"
                 elif action_input == "help":
                     print(f"you can do:\n{green}go {yellow}<direction>\n{green}take {yellow}<item> \n{green}show {yellow}inv / map / secret \n{green}exit{reset}")
                 else: print(f"{red}invalid input {yellow}use help for help{reset}")
 
             elif len(action_input.split(" ")) == 2:
                 verb, noun = action_input.lower().split(" ")
-                if len(verb) and len(noun) > 0:
+                if len(verb) > 0 and len(noun) > 0:
                     if verb == "go":
                         if noun[0] in self.current_room.mapping.keys():
                             return noun
@@ -216,7 +216,7 @@ class Player:
                         elif noun == "map":
                             return "map"
                         elif noun == "secret":
-                            if player1.current_room.secret == True:
+                            if self.current_room.secret == True:
                                 return "minigame"
                             else: print(f"{yellow}There is no secret in this room{reset}")
                         else: print(f"{red}there is no {blue} {noun} {red}to show, you can show {blue}inv {red}or {blue}map{reset}")
@@ -233,7 +233,6 @@ def mini_game():
         random_number = randint(1, 100)
         count = 4
         while count >= 0:
-            print(random_number) # testing purposes
             try:
                 guess = int(input(f"your guess\n>"))
             except ValueError:
@@ -251,18 +250,18 @@ def mini_game():
     elif random == 2:
         print("minigame 2 - always win")
         return "miniwon"
-    else: print("wrong input")# only until second minigame is implemented
+    else:
+        print("wrong input")# only until second minigame is implemented
+        return "minilost"
 
 def display_map(maps):
-    for i in range(len(maps)):
-        row = maps[i]
-        room_name = player1.current_room.name[:4]
-        for x in range(len(row)):
-            if room_name in row[x]:
-                row[x] = f"{bg_yellow}{room_name}{reset}"
-            elif str(row[x]).startswith("\x1b[43m"):
-                row[x] = str(row[x]).replace("\x1b[43m", "\x1b[45m")
-            print(row[x], end="")
+    room_name = player1.current_room.name[:4]
+    for row in maps:
+        for cell in row:
+            if room_name in cell:
+                print(f"{bg_yellow}{room_name}{reset}", end="")
+            else:
+                print(cell, end="")
         print()
 
 def game_map():
@@ -325,6 +324,9 @@ def game():
                 else:
                     print(f"{yellow}there is no map to show{reset}")
                     output = player1.player_action()
+            elif output == "exit":
+                game()
+                return
             elif output == "unfinished":
                 print(f"{red}unfinished element{reset}")
                 break
