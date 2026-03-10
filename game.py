@@ -266,9 +266,10 @@ def game_map():
     maps = {
         "0": {"map": None, "room": room_test_0, "return": "goon", "print": "You chose Map 0: The short test"},
         "1": {"map": map1(), "room": room0, "return": "goon", "print": "You chose the testing Map"},
-        "2": {"map": None, "room": room2_0, "return": "unfinished", "print": ""},
+        "2": {"map": map2(), "room": room2_0, "return": "goon", "print": "You chose Map 2: The Ruined Castle"},
         "3": {"map": map3(), "room": room3_0, "return": "goon", "print": "You chose Map 3: The Drowned Abbey of Tides"},
-        "4": {"map": map4(), "room": room4_0, "return": "goon", "print": "You chose Map 4: The Clockwork Keep of Brass"}
+        "4": {"map": map4(), "room": room4_0, "return": "goon", "print": "You chose Map 4: The Clockwork Keep of Brass"},
+        "5": {"map": map5(), "room": room5_0, "return": "goon", "print": "You chose Map 5: The Forsaken Watchtower"}
     }
 
     while True:
@@ -276,8 +277,10 @@ def game_map():
 Which map do you want to play?
     {blue}[0] {reset} test_short
     {blue}[1] {reset} test_long
-    {blue}[2] {reset} The Drowned Abbey of Tides
-    {blue}[3] {reset} The Clockwork Keep of Brass
+    {blue}[2] {reset} The Ruined Castle
+    {blue}[3] {reset} The Drowned Abbey of Tides
+    {blue}[4] {reset} The Clockwork Keep of Brass
+    {blue}[5] {reset} The Forsaken Watchtower
 >""")
         if map_input in maps:
             room_dict = maps[map_input]
