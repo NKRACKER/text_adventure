@@ -302,6 +302,7 @@ Which map do you want to play?
 
 def game():
     map_output = game_map()
+    print(f"{green}use {blue}help {green}to show commands{reset}")
     if map_output == "goon":
         player1.enter_room("n")
         output = player1.player_action()
