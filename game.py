@@ -332,7 +332,7 @@ def game():
                     output = player1.player_action()
             elif output == "exit":
                 game()
-                return
+                return "exit"
             elif output == "unfinished":
                 print(f"{red}unfinished element{reset}")
                 break
